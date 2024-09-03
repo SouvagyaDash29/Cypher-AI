@@ -1,0 +1,8 @@
+.user{
+	padding: 20px;
+	width: 90%;
+
+	p,li{
+		margin: 10px 0px;
+	}
+}
