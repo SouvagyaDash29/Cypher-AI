@@ -39,7 +39,7 @@ const Dashboard = () => {
         <div className="flex items-center gap-5 opacity-20 ">
           <img src="/logo.png" alt="" className="size-16" />
           <h1 className="text-[64px] font-medium bg-gradient-to-r from-[#217bfe] to-[#e55571] bg-clip-text text-transparent max-xl:text-6xl">
-            Developer AI
+          Cypher AI
           </h1>
         </div>
       </div>
