@@ -19,8 +19,8 @@ const Home = () => {
         className="absolute bottom-0 left-0 opacity-10 animate-rotate -z-[1]"
       />
       <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center">
-        <h1 className="text-8xl font-medium bg-gradient-to-r from-[#217bfe] to-[#e55571] bg-clip-text text-transparent max-xl:text-6xl">
-          Developer AI
+        <h1 className="text-8xl p-4 font-medium bg-gradient-to-r from-[#217bfe] to-[#e55571] bg-clip-text text-transparent max-xl:text-6xl">
+        Cypher AI
         </h1>
         <h2 className="font-semibold">
           Super charge Your Creativity and Productivity
@@ -49,7 +49,7 @@ const Home = () => {
             alt="BOT img"
             className="w-[100%] h-[100%] object-contain animate-zoom"
           />
-          <div className="absolute -bottom-7 -right-12 flex items-center gap-2 p-5 bg-[#2c2937] rounded-lg max-lg:hidden max-xl:right-0">
+          <div className="w-[54%] absolute -bottom-7 -right-12 flex items-center gap-2 p-5 bg-[#2c2937] rounded-lg max-lg:hidden max-xl:right-0">
             <img
               src={
                 typeingStatus === "human1"
