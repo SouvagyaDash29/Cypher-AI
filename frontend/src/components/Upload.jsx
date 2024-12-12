@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { IKContext, IKImage, IKUpload } from "imagekitio-react";
+import { IKContext,  IKUpload } from "imagekitio-react";
 
 const urlEndpoint = import.meta.env.VITE_IMAGE_KIT_ENDPOINT;
 const publicKey = import.meta.env.VITE_IMAGE_KIT_PUBLICKEY;
