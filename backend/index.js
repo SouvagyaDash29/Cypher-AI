@@ -9,7 +9,7 @@ import Chat from "./models/chat.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
 import dotenv from 'dotenv';
 import { Webhook } from "svix";
-import bodyParser from "bo";
+import bodyParser from "body-parser";
 
 const port = process.env.PORT || 3000;
 const app = express();
