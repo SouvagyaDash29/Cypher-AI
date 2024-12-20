@@ -7,10 +7,14 @@ import mongoose from "mongoose";
 import UserChats from "./models/userChats.js";
 import Chat from "./models/chat.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import dotenv from 'dotenv';
+import { Webhook } from "svix";
+import bodyParser from "bo";
 
 const port = process.env.PORT || 3000;
 const app = express();
 
+dotenv.config()
 // const __filename = fileURLToPath(import.meta.url)
 // const __dirname = path.dirname(__filename)
 
@@ -49,6 +53,39 @@ app.get("/api/upload", (req, res) => {
 //   console.log(userId);
 //   res.send("Success!");
 // })
+
+app.post('/api/webhooks',
+  bodyParser.raw({ type: "application/json" }),
+  function(req, res) {
+    try {
+      const payloadString = req.body.toString();
+      const svixHeaders = req.headers;
+
+      const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET_KEY)
+      const evt = wh.verify(payloadString, svixHeaders);
+
+      const { id, ...attributes } = evt.data;
+
+      const eventType = evt.type;
+
+      if(eventType === 'user.created'){
+        console.log(`User ${id} is ${eventType}`)
+        console.log(attributes)
+      }
+
+      res.status(200).json({
+        success: true,
+        message: 'Webhook received successfully',
+      })
+
+    } catch (error) {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      })
+    }
+  })
+
 
 app.post("/api/chats", ClerkExpressRequireAuth(), async (req, res) => {
   const userId = req.auth.userId;
@@ -168,3 +205,10 @@ app.listen(port, () => {
   connect();
   console.log(`listening on ${port}`);
 });
+
+
+
+
+
+// for pakeage.json
+// --env-file .env
